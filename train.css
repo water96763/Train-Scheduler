@@ -1,0 +1,38 @@
+#addTrain {
+    border: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 20px;
+    width: 90%;
+    
+}
+#currentTrainSchedule {
+    border: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: auto;
+    width: 100%;  
+ 
+}
+
+.table {
+    border: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: auto;
+    width: 50%;  
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: tan;
+}
+
+#row {
+    background-color: blue;
+    border: none;
+    color: white;
+}
+input[type=text] {
+    width: 100%;
+ }
