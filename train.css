@@ -17,6 +17,7 @@
 }
 .jumbotron {
     text-align: center;
+    background-image: url("/assets/train.jpg");
 }
 input[type=text] {
     width: 100%;

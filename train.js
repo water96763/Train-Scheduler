@@ -60,7 +60,6 @@ database.ref().on("child_added", function(childSnapshot) {
         //format next train to hhmmA to display correctly
       let nextTrain = moment().add(minToNext, "minutes").format ("hh:mm A")
 
-        //append table with all fields of child
       $("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination  + "</td><td>" + frequency + "</td><td>" + nextTrain + "</td><td>" + minToNext + "</td></tr>");
   });
    
