@@ -19,8 +19,8 @@ $("#addTrainButton").on("click", function(event) {
         //take input from form and trim
       let trainName = $("#name").val().trim();
       let destination = $("#destination").val().trim();
-      // let firstTrain = moment($("#firstTime").val().trim(), "HH:mm").format("X"); 
-      let firstTrain = $("#firstTime").val().trim();
+      let firstTrain = moment($("#firstTime").val().trim(), "HH:mm").format("X"); 
+      // let firstTrain = $("#firstTime").val().trim();
       let frequency = $("#frequency").val().trim();
         //new "object" to be pushed into database
       let newTrain = {
@@ -41,7 +41,9 @@ $("#addTrainButton").on("click", function(event) {
 database.ref().on("child_added", function(childSnapshot) {
                           //make sure child exists- no child left behind
                           console.log(childSnapshot.val());
-        //set child variables for each child
+
+      // set child variables for each child
+      // VARIABLE INSTANTIATION
       var trainName = childSnapshot.val().name;
       var destination = childSnapshot.val().destin;
       var firstTrain = childSnapshot.val().first;
@@ -51,15 +53,18 @@ database.ref().on("child_added", function(childSnapshot) {
                           console.log(destination);
                           console.log(firstTrain);
                           console.log(frequency);
+
         //convert first train info into moment.js info for manipulation (subtraction)
-      let convertedFirstTrain = moment(firstTrain, "hh:mm").subtract(1, "years");
+      let convertedFirstTrain = moment(firstTrain, "X").subtract(1, "years");
                           console.log(convertedFirstTrain);
         //moment.js info, setting moment
       let currentTime = moment().format();
-                           console.log("Time now = " + moment(currentTime).format("HH:mm"));
+                           console.log("Time now = " + moment().format("HH:mm"));
+                           console.log(moment(), 'MOMENT');
         //get the time difference between the two times
       let timeDiff = moment().diff(moment(convertedFirstTrain), "minutes");
                         console.log("Diff in time =" + timeDiff);
+
         //divide amount of time passed by frequency of train, obtain remainder
       let remainder = timeDiff % frequency;
                         console.log(remainder);
@@ -67,6 +72,7 @@ database.ref().on("child_added", function(childSnapshot) {
       let minToNext = frequency - remainder;
         //format next train to hhmmA to display correctly
       let nextTrain = moment().add(minToNext, "minutes").format ("hh:mm A")
+
         //append table with all fields of child
       $("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination  + "</td><td>" + frequency + "</td><td>" + nextTrain + "</td><td>" + minToNext + "</td></tr>");
   });
