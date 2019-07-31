@@ -39,35 +39,22 @@ $("#addTrainButton").on("click", function(event) {
 });
         //database 'child' management  
 database.ref().on("child_added", function(childSnapshot) {
-                          //make sure child exists- no child left behind
-                          console.log(childSnapshot.val());
-
       // set child variables for each child
       // VARIABLE INSTANTIATION
       var trainName = childSnapshot.val().name;
       var destination = childSnapshot.val().destin;
       var firstTrain = childSnapshot.val().first;
       var frequency = childSnapshot.val().freq;
-                           //dbl check child info exists
-                          console.log(trainName);
-                          console.log(destination);
-                          console.log(firstTrain);
-                          console.log(frequency);
 
         //convert first train info into moment.js info for manipulation (subtraction)
       let convertedFirstTrain = moment(firstTrain, "X").subtract(1, "years");
-                          console.log(convertedFirstTrain);
+
         //moment.js info, setting moment
       let currentTime = moment().format();
-                           console.log("Time now = " + moment().format("HH:mm"));
-                           console.log(moment(), 'MOMENT');
         //get the time difference between the two times
       let timeDiff = moment().diff(moment(convertedFirstTrain), "minutes");
-                        console.log("Diff in time =" + timeDiff);
-
         //divide amount of time passed by frequency of train, obtain remainder
       let remainder = timeDiff % frequency;
-                        console.log(remainder);
         //get remainder to get min remaining till next train, minus from frequency to get time till next train
       let minToNext = frequency - remainder;
         //format next train to hhmmA to display correctly

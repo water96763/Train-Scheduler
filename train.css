@@ -4,7 +4,6 @@
     padding-right: 50px;
     margin: 20px;
     width: 90%;
-    
 }
 #currentTrainSchedule {
     border: 10px;
@@ -13,15 +12,12 @@
     margin: auto;
     width: 100%;  
 }
-
 .card-header {
      font-size: 30px;
 }
-
 .jumbotron {
     text-align: center;
 }
-
 input[type=text] {
     width: 100%;
  }
